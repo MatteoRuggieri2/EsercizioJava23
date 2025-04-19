@@ -1,0 +1,164 @@
+package esercizi;
+
+import java.util.HashMap;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class ConvertListToMap implements StreamListToMap {
+
+	public void setBook(Book bookToSet, String author, String description, String isbn, String nation, int price) {
+		bookToSet.setAuthor(author);
+		bookToSet.setDesc(description);
+		bookToSet.setIsbn(isbn);
+		bookToSet.setNazione(nation);
+		bookToSet.setPrice(0);
+	}
+
+	/* Questo metodo restituisce una Map con gli elementi forniti all'interno
+	 * della lista passata come parametro. */
+	@Override
+	public Map<String, Book> listToMapOldStyle(List<Book> list) {
+		
+		Map<String, Book> bookMap = new HashMap<>();
+		for (Book book : list) {
+			bookMap.put(book.getIsbn(), book);
+		}
+		
+		return bookMap;
+	}
+
+	@Override
+	public Map<String, Book> listToMapWithLambda(List<Book> list) {
+		
+		return list.stream()                 // key                  // value
+			       .collect(Collectors.toMap(book -> book.getIsbn(), book -> book));
+		
+		/* Precedentemente avevo salvato in una variabile "Stream<Book> booksMap"
+		 * il risultato del mio stream. Facendo però successivamente il return 
+		 * di quella variabile, il tipo era "Stream<Book>" e andava in conflitto
+		 * con il tipo ritornato dal metodo, ovvero "Map<String, Book>".
+		 * Siccome a me serve solo la mappa, e non lo stream, ritorno direttamente 
+		 * il risultato. */
+		
+		/* Come terzo argomento posso anche mettere ad esempio "TreeMap::new", in 
+		 * questo modo invece di crearmi un HashMap (quella di default) mi creerà
+		 * una TreeMap. */
+	
+	}
+
+	@Override
+	public Map<String, Book> listToMapWithReference(List<Book> list) {
+		return list.stream()                 // key         // value
+			       .collect(Collectors.toMap(Book::getIsbn, book -> book));
+		
+		/* Book::getIsbn
+		 * Questo mi permette di richiamare il meodo getIsbn del Book corrente */
+	}
+
+	@Override
+	public Map<String, Book> listToMapWithFunctionIdentity(List<Book> list) {
+		return list.stream()                 // key         // value
+			       .collect(Collectors.toMap(Book::getIsbn, Function.identity()));
+	}
+
+	@Override
+	public Map<String, List<Book>> listToMapWithNoDuplicatesList(List<Book> list) {
+		return list.stream()                      // key
+			       .collect(Collectors.groupingBy(Book::getIsbn));
+		
+		/* .groupingBy(Book::getIsbn)
+		 * "groupingBy" mi permette di raggruppare tutti gli elementi duplicati all'interno di
+		 * una mappa. In pratica nelle parentesi gli passo il valore che deve controllare (in questo
+		 * caso quindi controlla se ci sono doppioni in base al ISBN. Il value non abbiamo bisogno
+		 * di specificarlo perchè capisce che è l'elemento corrente, e capisce che si tratta di 
+		 * un book per via del tipo dichiarato (Book) quando lanciamo la funzione dell'isbn */
+	}
+
+	@Override
+	public Map<String, Book> listToMapWithNoDuplicates(List<Book> list) {
+		return list.stream()                 // key         // value             // Gestione duplicati
+			       .collect(Collectors.toMap(Book::getIsbn, Function.identity(), (first, second) -> first));
+		
+		/* Per gestire i duplicati, utilizzo questa sintassi: (first, second) -> first 
+		 * In pratica con questa sintassi sto dicendo questo: first è l'elemento corrente
+		 * dell'iterazione, e se trova un elemento uguale (con la stessa chave), lo salva in second. Dopo la freccia
+		 * della lambda expression, viene effettuato un controllo con equals. In questo caso, 
+		 * se i 2 elementi sono uguali, esegue il return di first, quindi del valore che ha 
+		 * trovato per primo. In questo caso dopo la freccia esegue questo controllo con equals, 
+		 * ma io lì posso fare anche altri controlli, ad esempio se il titolo del libro contiene
+		 * una determinata parola fai il return del secondo ecc...
+		 * 
+		 * Per mettere il codice aggiuntivo nella gestione duplicati dovresti fare così:
+		 * (first, second) -> {
+		 * 						 code...
+		 * 						 return first
+		 * 					  }*/
+	}
+	// TODO da testare
+	@Override
+	public Map<String, List<Book>> listToMapIsbnGreaterThen(List<Book> books, String isbn) {
+		return books.stream()                      // key
+			        .filter(book -> book.getIsbn().compareTo(isbn) > 0)
+				    .collect(Collectors.groupingBy(Book::getIsbn));
+	}
+
+	@Override
+	public Map<Boolean, List<Book>> listToMapPriceGreaterThen(List<Book> books, int price) {
+		return books.stream()                      // key
+		        .filter(book -> book.getPrice().compareTo(price) > 0)
+			    .collect(Collectors.partitioningBy());
+		// .collect(Collectors.partitioningBy...
+	}
+
+	// Stringa con tutti i nomi dei libri
+	@Override
+	public String bookNamesJoined(List<Book> books) {
+		// TODO Auto-generated method stub
+		return null;
+		// joining
+	}
+
+	@Override
+	public double averageBookPrize(List<Book> books) {
+		// TODO Auto-generated method stub
+		return 0;
+		// averagingInt
+		// anche orElse nel caso non ci siano libri
+	}
+
+	@Override
+	public int totalCost(List<Book> books) {
+		// TODO Auto-generated method stub
+		return 0;
+		// summingInt
+	}
+
+	// Ci riporta delle statistiche, tipo valori max, min, medi...
+	@Override
+	public IntSummaryStatistics booksStatistics(List<Book> books) {
+		// TODO Auto-generated method stub
+		return null;
+		// summarizingInt
+	}
+
+	@Override
+	public String[] booksAuthors(List<Book> books) {
+		// TODO Auto-generated method stub
+		return null;
+		// .map, 
+		// .collect (Collector.toList), // Restituisce una List<String>
+		// .toArray(new String[0])      // Restituisce String[] da List
+	}
+
+	@Override
+	public String[] booksAuthors(List<Book> books, String nazione) {
+		// TODO Auto-generated method stub
+		return null;
+		// .filter, .map, .collect, .toArray
+	}
+
+}
