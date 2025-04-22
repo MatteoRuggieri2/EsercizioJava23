@@ -122,6 +122,7 @@ public class ConvertListToMap implements StreamListToMap {
 		// joining
 	}
 
+	// Restituisce la media prezzi dei libri
 	@Override
 	public double averageBookPrize(List<Book> books) {
 		// TODO Auto-generated method stub
@@ -130,6 +131,7 @@ public class ConvertListToMap implements StreamListToMap {
 		// anche orElse nel caso non ci siano libri
 	}
 
+	// Restituisce il costo totale dei libri
 	@Override
 	public int totalCost(List<Book> books) {
 		// TODO Auto-generated method stub
@@ -145,6 +147,7 @@ public class ConvertListToMap implements StreamListToMap {
 		// summarizingInt
 	}
 
+	// Restituisce tutti gli autori dei libri
 	@Override
 	public String[] booksAuthors(List<Book> books) {
 		// TODO Auto-generated method stub
@@ -154,6 +157,7 @@ public class ConvertListToMap implements StreamListToMap {
 		// .toArray(new String[0])      // Restituisce String[] da List
 	}
 
+	// Restituisce tutti gli autori dei libri filtrati per nazione
 	@Override
 	public String[] booksAuthors(List<Book> books, String nazione) {
 		// TODO Auto-generated method stub
