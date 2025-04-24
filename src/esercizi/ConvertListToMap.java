@@ -31,6 +31,8 @@ public class ConvertListToMap implements StreamListToMap {
 		return bookMap;
 	}
 
+	/* Questo metodo restituisce una Map come il metodo precedente,
+	 * utilizza però le lambda expression. */
 	@Override
 	public Map<String, Book> listToMapWithLambda(List<Book> list) {
 		
