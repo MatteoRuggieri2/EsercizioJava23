@@ -52,6 +52,8 @@ public class ConvertListToMap implements StreamListToMap {
 	
 	}
 
+	/* Questo metodo restituisce una Map come il metodo precedente,
+	 * utilizza però la method reference nella lambda expression. */
 	@Override
 	public Map<String, Book> listToMapWithReference(List<Book> list) {
 		return list.stream()                 // key         // value
