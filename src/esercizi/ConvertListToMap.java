@@ -63,10 +63,21 @@ public class ConvertListToMap implements StreamListToMap {
 		 * Questo mi permette di richiamare il meodo getIsbn del Book corrente */
 	}
 
+	/* Questo metodo restituisce una Map come il metodo precedente,
+	 * utilizza però il metodo identity() della classe Function. */
 	@Override
 	public Map<String, Book> listToMapWithFunctionIdentity(List<Book> list) {
 		return list.stream()                 // key         // value
 			       .collect(Collectors.toMap(Book::getIsbn, Function.identity()));
+		
+		/* Function.identity() è un metodo statico della classe Function che 
+		 * restituisce una funzione che ritorna esattamente l'oggetto che riceve.
+		 * In pratica, equivale a scrivere: book -> book
+		 * cioè una funzione che prende un Book e restituisce lo stesso Book
+		 * senza modificarlo.
+		 * 
+		 * Quindi Function.identity() serve a dire: "Voglio come valore della
+		 * mappa lo stesso oggetto della lista, senza trasformarlo." */
 	}
 
 	@Override
