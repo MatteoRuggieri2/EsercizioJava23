@@ -80,6 +80,9 @@ public class ConvertListToMap implements StreamListToMap {
 		 * mappa lo stesso oggetto della lista, senza trasformarlo." */
 	}
 
+	/* Questo metodo restituisce una Map come il metodo precedente,
+	 * utilizzando groupingBy che però mi elimina i duplicati in base
+	 * al valore che gli passiamo come argomento. */
 	@Override
 	public Map<String, List<Book>> listToMapWithNoDuplicatesList(List<Book> list) {
 		return list.stream()                      // key
