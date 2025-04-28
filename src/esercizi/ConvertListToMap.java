@@ -96,6 +96,8 @@ public class ConvertListToMap implements StreamListToMap {
 		 * un book per via del tipo dichiarato (Book) quando lanciamo la funzione dell'isbn */
 	}
 
+	/* Questo metodo restituisce una Map come il metodo precedente,
+	 * utilizzando groupingBy, ma in più è presente la gestione dei duplicati. */
 	@Override
 	public Map<String, Book> listToMapWithNoDuplicates(List<Book> list) {
 		return list.stream()                 // key         // value             // Gestione duplicati
@@ -116,6 +118,7 @@ public class ConvertListToMap implements StreamListToMap {
 		 * 						 return first
 		 * 					  }*/
 	}
+	
 	// TODO da testare
 	@Override
 	public Map<String, List<Book>> listToMapIsbnGreaterThen(List<Book> books, String isbn) {
