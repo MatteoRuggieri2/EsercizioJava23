@@ -127,12 +127,15 @@ public class ConvertListToMap implements StreamListToMap {
 				    .collect(Collectors.groupingBy(Book::getIsbn));
 	}
 
+	
 	@Override
 	public Map<Boolean, List<Book>> listToMapPriceGreaterThen(List<Book> books, int price) {
 		return books.stream()                      // key
-		        .filter(book -> book.getPrice().compareTo(price) > 0)
-			    .collect(Collectors.partitioningBy());
-		// .collect(Collectors.partitioningBy...
+		        .collect(Collectors.partitioningBy(book -> book.getPrice() > price));
+		
+		/* In pratica il metodo partitioningBy separa in 2 parti gli oggetti sottoposti
+		 * al controllo. Quelli che soddisfano il requisito vanno (all'interno della mappa)
+		 * nella lista sotto la chiave true, gli altri nella lista sotto la chiave false. */
 	}
 
 	// Stringa con tutti i nomi dei libri
