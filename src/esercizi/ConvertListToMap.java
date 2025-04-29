@@ -162,12 +162,11 @@ public class ConvertListToMap implements StreamListToMap {
 				.collect(Collectors.averagingDouble(Book::getPrice));
 	}
 
-	// Restituisce il costo totale dei libri
+	// Restituisce la somma totale del costo dei libri.
 	@Override
 	public int totalCost(List<Book> books) {
-		// TODO Auto-generated method stub
-		return 0;
-		// summingInt
+		return books.stream()
+				.collect(Collectors.summingInt(Book::getPrice));
 	}
 
 	// Ci riporta delle statistiche, tipo valori max, min, medi...
