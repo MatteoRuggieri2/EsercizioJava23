@@ -127,7 +127,9 @@ public class ConvertListToMap implements StreamListToMap {
 				    .collect(Collectors.groupingBy(Book::getIsbn));
 	}
 
-	
+	/* Questo metodo aggiunge i libri con il prezzo più alto rispetto a quello indicato
+	 * in una lista all'interno della mappa sotto la chiave true, mentre quelli con prezzo
+	 * più basso sotto la chiave false. */
 	@Override
 	public Map<Boolean, List<Book>> listToMapPriceGreaterThen(List<Book> books, int price) {
 		return books.stream()                      // key
