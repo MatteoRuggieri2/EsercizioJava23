@@ -144,9 +144,15 @@ public class ConvertListToMap implements StreamListToMap {
 	// Stringa con tutti i nomi dei libri
 	@Override
 	public String bookNamesJoined(List<Book> books) {
-		// TODO Auto-generated method stub
-		return null;
-		// joining
+		return books.stream()
+				.map(Book::getIsbn)
+				.collect(Collectors.joining(" ,", "", "."));
+		
+		/* .map crea un nuovo stream con i risultati del metodo applicato ad ognuno
+		 * degli elementi presenti nello stream precedente.
+		 * In questo caso quindi per ogni book prendo l'ISBN e quindi map crea uno
+		 * stream con tutti i codici.
+		 * Fare Book::getIsbn significa fare book -> book.getIsbn() */
 	}
 
 	// Restituisce la media prezzi dei libri
