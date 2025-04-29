@@ -119,7 +119,8 @@ public class ConvertListToMap implements StreamListToMap {
 		 * 					  }*/
 	}
 	
-	// TODO da testare
+	/* Questo metodo raggruppa i libri in base all'ISBN, ma solo quelli con il valore maggiore
+	 * rispetto all'ISBN fornito come argomento. */
 	@Override
 	public Map<String, List<Book>> listToMapIsbnGreaterThen(List<Book> books, String isbn) {
 		return books.stream()                      // key
