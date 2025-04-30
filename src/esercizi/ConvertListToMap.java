@@ -172,9 +172,8 @@ public class ConvertListToMap implements StreamListToMap {
 	// Ci riporta delle statistiche, tipo valori max, min, medi...
 	@Override
 	public IntSummaryStatistics booksStatistics(List<Book> books) {
-		// TODO Auto-generated method stub
-		return null;
-		// summarizingInt
+		return books.stream()
+				.collect(Collectors.summarizingInt(Book::getPrice));
 	}
 
 	// Restituisce tutti gli autori dei libri
