@@ -60,7 +60,7 @@ public class ConvertListToMap implements StreamListToMap {
 			       .collect(Collectors.toMap(Book::getIsbn, book -> book));
 		
 		/* Book::getIsbn
-		 * Questo mi permette di richiamare il meodo getIsbn del Book corrente */
+		 * Questo mi permette di richiamare il meodo getIsbn del Book corrente.*/
 	}
 
 	/* Questo metodo restituisce una Map come il metodo precedente,
@@ -179,11 +179,10 @@ public class ConvertListToMap implements StreamListToMap {
 	// Restituisce tutti gli autori dei libri
 	@Override
 	public String[] booksAuthors(List<Book> books) {
-		// TODO Auto-generated method stub
-		return null;
-		// .map, 
-		// .collect (Collector.toList), // Restituisce una List<String>
-		// .toArray(new String[0])      // Restituisce String[] da List
+		return books.stream()
+				.map(Book::getAuthor)
+				.collect(Collectors.toList()) // Restituisce una List<String>
+				.toArray(new String[0]);  // Restituisce String[] partendo da List
 	}
 
 	// Restituisce tutti gli autori dei libri filtrati per nazione
