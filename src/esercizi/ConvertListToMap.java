@@ -188,9 +188,11 @@ public class ConvertListToMap implements StreamListToMap {
 	// Restituisce tutti gli autori dei libri filtrati per nazione
 	@Override
 	public String[] booksAuthors(List<Book> books, String nazione) {
-		// TODO Auto-generated method stub
-		return null;
-		// .filter, .map, .collect, .toArray
+		return books.stream()
+				.filter(book -> book.getNazione().equals(nazione))
+				.map(Book::getAuthor)
+				.collect(Collectors.toList()) // Restituisce una List<String>
+				.toArray(new String[0]);  // Restituisce String[] partendo da List
 	}
 
 }
