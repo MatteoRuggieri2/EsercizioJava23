@@ -123,5 +123,12 @@ class ConvertListToMapTest {
 		assertEquals(expectedBookMap, cltm.listToMapPriceGreaterThen(bookList, 50));
 		assertEquals(expectedBookMapAllFalse, cltm.listToMapPriceGreaterThen(bookList, 100));
 	}
+	
+	// Metodo 9
+	@Test
+	void testBookNamesJoined() {
+		String expectedString = "13454, 54324, 65475.";
+		assertEquals(expectedString, cltm.bookNamesJoined(bookList));
+	}
 
 }
