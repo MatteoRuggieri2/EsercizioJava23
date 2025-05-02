@@ -28,7 +28,7 @@ class Book {
     String isbn;
     String desc;
     String author;
-    String nazione;
+    String nation;
     int price;
 
     /* Definire i costruttori appropriati, i metodi
@@ -68,5 +68,5 @@ public interface StreamListToMap {
     //12 returns all authors
     String[] booksAuthors(List<Book> books);
     //13 returns all authors of a specific nation
-    String[] booksAuthors(List<Book> books, String nazione);
+    String[] booksAuthors(List<Book> books, String nation);
 }
