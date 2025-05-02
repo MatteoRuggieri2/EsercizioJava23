@@ -14,7 +14,7 @@ public class ConvertListToMap implements StreamListToMap {
 		bookToSet.setDesc(description);
 		bookToSet.setIsbn(isbn);
 		bookToSet.setNazione(nation);
-		bookToSet.setPrice(0);
+		bookToSet.setPrice(price);
 	}
 
 	/* Questo metodo restituisce una Map con gli elementi forniti all'interno

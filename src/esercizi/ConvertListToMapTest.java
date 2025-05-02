@@ -113,5 +113,18 @@ class ConvertListToMapTest {
 		assertEquals(expectedBookMap, cltm.listToMapIsbnGreaterThen(bookList, "20000"));
 		assertEquals(new HashMap<>(), cltm.listToMapIsbnGreaterThen(bookList, "99999"));
 	}
+	
+	// Metodo 8
+	@Test
+	void testListToMapPriceGreaterThen() {
+		Map<Boolean, List<Book>> expectedBookMap = new HashMap<>();
+		expectedBookMap.put(true, new ArrayList<>(List.of(book2)));
+		expectedBookMap.put(false, new ArrayList<>(List.of(book1, book3)));
+		Map<Boolean, List<Book>> expectedBookMapAllFalse = new HashMap<>();
+		expectedBookMapAllFalse.put(true, new ArrayList<>());
+		expectedBookMapAllFalse.put(false, new ArrayList<>(List.of(book1, book2, book3)));
+		assertEquals(expectedBookMap, cltm.listToMapPriceGreaterThen(bookList, 50));
+		assertEquals(expectedBookMapAllFalse, cltm.listToMapPriceGreaterThen(bookList, 100));
+	}
 
 }
