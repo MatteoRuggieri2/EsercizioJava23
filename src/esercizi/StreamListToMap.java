@@ -47,6 +47,6 @@ public interface StreamListToMap {
 	String[] booksAuthors(List<Book> books) ;
 	
 	//13 returns all authors of a specific nation
-	String[] booksAuthors(List<Book> books, String nazione) ;
+	String[] booksAuthors(List<Book> books, String nation) ;
 	
 }
