@@ -10,9 +10,19 @@ public class Book {
 	
 	String author;
 	
-	String nazione;
+	String nation;
 	
 	int price;
+	
+	
+	
+	public Book(String author, String desc, String isbn, String nation, int price) {
+		this.author = author;
+		this.desc = desc;
+		this.isbn = isbn;
+		this.nation = nation;
+		this.price = price;
+	}
 	
 	
 	
@@ -40,12 +50,12 @@ public class Book {
 		this.author = author;
 	}
 	
-	public String getNazione() {
-		return nazione;
+	public String getNation() {
+		return nation;
 	}
 	
-	public void setNazione(String nazione) {
-		this.nazione = nazione;
+	public void setnation(String nation) {
+		this.nation = nation;
 	}
 	
 	public int getPrice() {
@@ -60,7 +70,7 @@ public class Book {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(author, desc, isbn, nazione, price);
+		return Objects.hash(author, desc, isbn, nation, price);
 	}
 	
 	@Override
@@ -73,12 +83,12 @@ public class Book {
 			return false;
 		Book other = (Book) obj;
 		return Objects.equals(author, other.author) && Objects.equals(desc, other.desc)
-				&& Objects.equals(isbn, other.isbn) && Objects.equals(nazione, other.nazione) && price == other.price;
+				&& Objects.equals(isbn, other.isbn) && Objects.equals(nation, other.nation) && price == other.price;
 	}
 	
 	@Override
 	public String toString() {
-		return "Book [isbn=" + isbn + ", desc=" + desc + ", author=" + author + ", nazione=" + nazione + ", price="
+		return "Book [isbn=" + isbn + ", desc=" + desc + ", author=" + author + ", nazione=" + nation + ", price="
 				+ price + "]";
 	}
 	

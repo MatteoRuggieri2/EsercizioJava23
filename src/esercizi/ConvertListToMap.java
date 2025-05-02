@@ -9,14 +9,6 @@ import java.util.stream.Collectors;
 
 public class ConvertListToMap implements StreamListToMap {
 
-	public void setBook(Book bookToSet, String author, String description, String isbn, String nation, int price) {
-		bookToSet.setAuthor(author);
-		bookToSet.setDesc(description);
-		bookToSet.setIsbn(isbn);
-		bookToSet.setNazione(nation);
-		bookToSet.setPrice(price);
-	}
-
 	/* Questo metodo restituisce una Map con gli elementi forniti all'interno
 	 * della lista passata come parametro. */
 	@Override
@@ -186,9 +178,9 @@ public class ConvertListToMap implements StreamListToMap {
 
 	// Restituisce tutti gli autori dei libri filtrati per nazione
 	@Override
-	public String[] booksAuthors(List<Book> books, String nazione) {
+	public String[] booksAuthors(List<Book> books, String nation) {
 		return books.stream()
-				.filter(book -> book.getNazione().equals(nazione))
+				.filter(book -> book.getNation().equals(nation))
 				.map(Book::getAuthor)
 				.collect(Collectors.toList()) // Restituisce una List<String>
 				.toArray(new String[0]);  // Restituisce String[] partendo da List

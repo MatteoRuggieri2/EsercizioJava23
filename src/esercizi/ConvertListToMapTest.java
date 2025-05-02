@@ -27,12 +27,9 @@ class ConvertListToMapTest {
 		bookList = new ArrayList<Book>();
 		
 		// Aggiungo 3 libri alla lista di libri base (bookList)
-		book1 = new Book();
-		book2 = new Book();
-		book3 = new Book();
-		cltm.setBook(book1, "Autore1", "Questa è la descr 1", "54324", "it", 34);
-		cltm.setBook(book2, "Autore2", "Questa è la descr 2", "65475", "en", 65);
-		cltm.setBook(book3, "Autore3", "Questa è la descr 3", "13454", "es", 12);
+		book1 = new Book("Autore1", "Questa è la descr 1", "54324", "it", 34);
+		book2 = new Book("Autore2", "Questa è la descr 2", "65475", "en", 65);
+		book3 = new Book("Autore3", "Questa è la descr 3", "13454", "es", 12);
 		bookList.add(book1);
 		bookList.add(book2);
 		bookList.add(book3);
