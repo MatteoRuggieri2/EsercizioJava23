@@ -111,6 +111,7 @@ class ConvertListToMapTest {
 		expectedBookMap.put(book1.getIsbn(), new ArrayList<>(List.of(book1)));
 		expectedBookMap.put(book2.getIsbn(), new ArrayList<>(List.of(book2)));
 		assertEquals(expectedBookMap, cltm.listToMapIsbnGreaterThen(bookList, "20000"));
+		assertEquals(new HashMap<>(), cltm.listToMapIsbnGreaterThen(bookList, "99999"));
 	}
 
 }
