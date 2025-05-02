@@ -17,6 +17,9 @@ class ConvertListToMapTest {
 	static List<Book> duplicateBookList;
 	static Map<String, Book> testBookMap;
 	static Map<String, List<Book>> testDuplicateBookMap;
+	static Book book1;
+	static Book book2;
+	static Book book3;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -24,9 +27,9 @@ class ConvertListToMapTest {
 		bookList = new ArrayList<Book>();
 		
 		// Aggiungo 3 libri alla lista di libri base (bookList)
-		Book book1 = new Book();
-		Book book2 = new Book();
-		Book book3 = new Book();
+		book1 = new Book();
+		book2 = new Book();
+		book3 = new Book();
 		cltm.setBook(book1, "Autore1", "Questa è la descr 1", "54324", "it", 34);
 		cltm.setBook(book2, "Autore2", "Questa è la descr 2", "65475", "en", 65);
 		cltm.setBook(book3, "Autore3", "Questa è la descr 3", "13454", "es", 12);
@@ -99,6 +102,15 @@ class ConvertListToMapTest {
 	void testListToMapWithNoDuplicates() {
 		/* Confronto la mappa di test con quella restituita dalla funzione "listToMapWithNoDuplicates"*/
 		assertEquals(testBookMap, cltm.listToMapWithNoDuplicates(duplicateBookList));
+	}
+	
+	// Metodo 7
+	@Test
+	void testListToMapIsbnGreaterThen() {
+		Map<String, List<Book>> expectedBookMap = new HashMap<>();
+		expectedBookMap.put(book1.getIsbn(), new ArrayList<>(List.of(book1)));
+		expectedBookMap.put(book2.getIsbn(), new ArrayList<>(List.of(book2)));
+		assertEquals(expectedBookMap, cltm.listToMapIsbnGreaterThen(bookList, "20000"));
 	}
 
 }
