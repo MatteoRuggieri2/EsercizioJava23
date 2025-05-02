@@ -137,7 +137,8 @@ public class ConvertListToMap implements StreamListToMap {
 	public String bookNamesJoined(List<Book> books) {
 		return books.stream()
 				.map(Book::getIsbn)
-				.collect(Collectors.joining(" ,", "", "."));
+				.sorted()
+				.collect(Collectors.joining(", ", "", "."));
 		
 		/* .map crea un nuovo stream con i risultati del metodo applicato ad ognuno
 		 * degli elementi presenti nello stream precedente.
