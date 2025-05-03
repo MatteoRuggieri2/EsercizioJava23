@@ -137,5 +137,13 @@ class ConvertListToMapTest {
 		double expectedAverage = 37.00;
 		assertEquals(expectedAverage, cltm.averageBookPrize(bookList));
 	}
+	
+	// Metodo 11
+	@Test
+	void testTotalCost() {
+		int expectedSum = 111;
+		assertEquals(expectedSum, cltm.totalCost(bookList));
+	}
+	
 
 }
