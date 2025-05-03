@@ -159,5 +159,12 @@ class ConvertListToMapTest {
 		assertEquals(expectedSum, cltm.booksStatistics(bookList).getSum());
 	}
 	
+	// Metodo 13
+	@Test
+	void testBooksAuthors() {
+		String[] expectedAuthors = {"Autore1", "Autore2", "Autore3"};
+		assertArrayEquals(expectedAuthors, cltm.booksAuthors(bookList));
+	}
+	
 
 }
