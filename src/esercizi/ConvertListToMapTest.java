@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 
@@ -143,6 +144,19 @@ class ConvertListToMapTest {
 	void testTotalCost() {
 		int expectedSum = 111;
 		assertEquals(expectedSum, cltm.totalCost(bookList));
+	}
+	
+	// Metodo 12
+	@Test
+	void testBooksStatistics() {
+		int expectedCount = 3;
+		int expectedMax = 65;
+		int expectedMin = 12;
+		int expectedSum = 111;
+		assertEquals(expectedCount, cltm.booksStatistics(bookList).getCount());
+		assertEquals(expectedMax, cltm.booksStatistics(bookList).getMax());
+		assertEquals(expectedMin, cltm.booksStatistics(bookList).getMin());
+		assertEquals(expectedSum, cltm.booksStatistics(bookList).getSum());
 	}
 	
 
