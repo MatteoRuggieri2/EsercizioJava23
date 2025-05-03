@@ -130,5 +130,12 @@ class ConvertListToMapTest {
 		String expectedString = "13454, 54324, 65475.";
 		assertEquals(expectedString, cltm.bookNamesJoined(bookList));
 	}
+	
+	// Metodo 10
+	@Test
+	void testAverageBookPrize() {
+		double expectedAverage = 37.00;
+		assertEquals(expectedAverage, cltm.averageBookPrize(bookList));
+	}
 
 }
