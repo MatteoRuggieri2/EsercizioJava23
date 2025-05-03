@@ -166,5 +166,13 @@ class ConvertListToMapTest {
 		assertArrayEquals(expectedAuthors, cltm.booksAuthors(bookList));
 	}
 	
+	// Metodo 14
+	@Test
+	void testBooksAuthorsFilteredByNation() {
+		String[] expectedAuthors = {"Autore1"};
+		assertArrayEquals(expectedAuthors, cltm.booksAuthors(bookList, "it"));
+		assertArrayEquals(new String[0], cltm.booksAuthors(bookList, "fr"));
+	}
+	
 
 }
